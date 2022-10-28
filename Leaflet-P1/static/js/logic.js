@@ -1,5 +1,4 @@
 //Storing our API endpoint
-
 let URL = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson"
 
 // Performing a GET request to the query URL
@@ -55,15 +54,10 @@ function createFeatures(earthquakeData) {
 
   
   // Creating a GeoJSON layer that contains the features array on the earthquakeData object.
-  
   let earthquakes = L.geoJSON(earthquakeData, {
     pointToLayer: pointToLayer,
     onEachFeature: onEachFeature
   });
-
-    
-  
-
 
   // Sending our earthquakes layer to the createMap function
   createMap(earthquakes);
@@ -82,14 +76,13 @@ function createMap(earthquakes) {
     attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
   });
 
-  var Stadia_AlidadeSmooth = L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png', {
+  let Stadia_AlidadeSmooth = L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png', {
 	maxZoom: 20,
 	attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
   });
 
   // Create a baseMaps object.
   let baseMaps = {
-    
     "Street Map": street,
     "Topographic Map": topo,
     "Grey-Scale": Stadia_AlidadeSmooth
@@ -129,10 +122,7 @@ function createMap(earthquakes) {
             depth[i] + (depth[i + 1] ? '&ndash;' + depth[i + 1] + '<br>' : '+');
             }
     return div;
-
-   
-        
-      };
+  };
     
   // Adding Legend to my map
   legend.addTo(myMap);
